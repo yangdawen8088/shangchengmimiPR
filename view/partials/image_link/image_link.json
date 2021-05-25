@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "posters-user-info": "../canvas_user_info/index"
+  }
+}

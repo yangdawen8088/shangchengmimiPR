@@ -1,0 +1,64 @@
+<view class="container">
+  <view class='user_top'>
+    <block wx:if="{{loginUser}}">
+      <image class='user_head_img' bindtap='loginOut' src='{{loginUser.platformUser.headimgurl}}?x-oss-process=style/preview_120'></image>
+      <text class="user_title">用户名称</text>
+      <text class='user_name' bindtap='loginOut'>{{loginUser.platformUser.nickname}}</text>
+    </block>
+    <block wx:else>
+      <image class='user_head_img' bindtap='login' src=''></image>
+      <text class="user_title">用户名称</text>
+      <text class='user_name' bindtap='login'>未登入</text>
+    </block>
+    <view class='order_menu'>
+      <text class='order_menu_item' wx:for="{{orderData.cells}}" wx:for-item="cells" wx:key="{{index}}" data-link='{{cells.linkUrl}}' bindtap='tolinkUrl'>{{cells.text}}</text>
+    </view>
+    <view class='userShareEwm' bindtap='showPoster' style='box-shadow:6rpx 6rpx 8rpx #55555533'>
+      <image class='userEwmCode' src='https://image1.sansancloud.com/xianhua/2019_8/20/9/42/26_903.jpg?x-oss-process=style/preview_120'></image>
+    </view>
+    <view class='userBindWxGz' bindtap='clickWxGz'>
+      <!-- <web-view src="https://www.baidu.com/"></web-view> -->
+      <image class='userBindWxGzCode' wx:if="{{ !loginUser.platformUser.openid}}" src='http://image1.sansancloud.com/naifen/2019_10/29/14/21/4_730.jpg?x-oss-process=style/preview_120'></image>
+      <image class='userBindWxGzCode' wx:else src='http://image1.sansancloud.com/naifen/2019_10/29/14/23/43_119.jpg?x-oss-process=style/preview_120'></image>
+    </view>
+  </view>
+  <!-- 海报 -->
+  <posters-user-info ewmImgUrl='{{ewmImgUrl}}'  wx:if='{{posterState}}' bind:closePoaster="getChilrenPoster"></posters-user-info>
+  <view class='user_menu'>
+    <view class='user_menu_item'  wx:for="{{ListData.cells}}" wx:for-item="cells" wx:key="{{index}}" data-link='{{cells.linkUrl}}' bindtap='tolinkUrl'>
+      <view class="user_menu_item_link" wx:if="{{!cells.id}}">
+        <view class='user_menu_item_left'>
+          <image class='user_menu_item_icon' src='{{cells.iconPath}}'></image>
+          <text class='user_menu_item_name'>{{cells.text}}</text>
+        </view>
+        <image class='user_menu_item_more' src='http://image1.sansancloud.com/xianhua/2019_3/27/15/44/8_298.jpg?x-oss-process=style/preview_120'></image>
+      </view>
+      <button open-type="contact" plain='true' hover-class="none" style='border:none' class="user_menu_item_link kefu" wx:if="{{cells.id==1}}">
+        <view class='user_menu_item_left'>
+          <image class='user_menu_item_icon' src='{{cells.iconPath}}'></image>
+          <text class='user_menu_item_name'>{{cells.text}}</text>
+        </view>
+        <image class='user_menu_item_more' src='http://image1.sansancloud.com/xianhua/2019_3/27/15/44/8_298.jpg?x-oss-process=style/preview_120'></image>
+      </button>
+    </view>
+  </view>
+  <view class='user_footer'>
+    <image class='user_footer_img' mode='aspectFit' src='http://image1.sansancloud.com/xianhua/2019_3/27/15/46/41_583.jpg'></image>
+  </view>
+</view>
+<!-- 授权窗口 -->
+  <view wx:if="{{showPopup}}">
+  <!-- authorizationCount==1&& -->
+    <view class='authorizationBg'></view>
+    <view class='authorization'>
+      <view class='authorizationPopup'>
+        <view class='tipContent'>
+          <text style='font-size:38rpx;'>前往微信授权</text>
+        </view>
+        <view class='buttonArray'>
+          <button class='button cancel' bindtap='cancel'>取消</button>
+          <button class='button confirm' open-type="getUserInfo" style='color:{{setting.platformSetting.defaultColor}}'  bindgetuserinfo="bindGetUserInfo">确定</button>
+        </view>
+      </view>
+    </view>
+  </view>

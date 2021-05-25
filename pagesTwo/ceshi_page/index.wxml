@@ -1,0 +1,88 @@
+<view class="content" style="padding-bottom:{{imgList[swiperIndex-1].state?'0':'204rpx'}}">
+  <view class='swiperContainer'>
+    <swiper class='swiper_block' next-margin="{{swiperIndex==imgList.length?'0rpx':'52rpx'}}" previous-margin="{{swiperIndex==1?'0rpx':'52rpx'}}" autoplay="true" interval="5000" duration="500" bindchange="swiperChange" indicator-dots="true" indicator-color="#8f8e92" indicator-active-color="#ffffff" circular="false" easing-function="easeInOutCubic">
+      <block wx:for="{{imgList}}"  wx:key="{{swiper}}">
+        <swiper-item class='swiper_item' data-imageUrl='{{item.url}}' data-index='{{index}}' bindtap='lookBigImage'>
+          <view class="img_blcok" style="justify-content:{{index+1==swiperIndex?'center':(index+1<swiperIndex?'flex-end':'flex-start')}}">
+            <image mode='aspectFit' src="{{item.url}}" style="border-radius: 20rpx;{{index+1==swiperIndex?'height:260rpx;width:98%':'height:180rpx;width:72%'}}" />
+          </view>
+        </swiper-item> 
+      </block>
+    </swiper>
+    <view class="swiper_item_bg" style="background:{{imgList[swiperIndex-1].background}}">
+      <view class="swiper_item_info">
+        <text class="swiper_item_info_text">{{imgList[swiperIndex-1].text}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="members_info_block">
+    <!-- 权益模块 -->
+    <view class="members_right">
+      <view class="members_right_title">
+        <view class="members_right_title_block">
+          <image class="members_right_title_img" src="http://image1.sansancloud.com/xianhua/2019_12/13/15/32/8_313.jpg?x-oss-process=style/preview_120"></image>
+          <text class="members_right_title_text">消费权益</text>
+          <image class="members_right_title_img" src="http://image1.sansancloud.com/xianhua/2019_12/13/15/32/8_341.jpg?x-oss-process=style/preview_120"></image>
+        </view>
+        <view class="members_right_title_info">
+          <text>开通成为蟹老板，每年预计</text>
+          <text class="members_right_title_info_stress">可省 8090元</text>
+        </view>
+      </view>
+      <view class="members_right_list">
+        <view class="members_right_item" wx:for="{{membersRightList}}">
+          <image class="members_right_item_icon" src="{{item.icon}}"></image>
+          <view class="members_right_item_info">
+            <text class="members_right_item_info_title">{{item.title}}</text>
+            <text class="members_right_item_info_subtitle">{{item.subTitle}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 权益模块 -->
+    <view class="members_right">
+      <view class="members_right_title">
+        <view class="members_right_title_block">
+          <image class="members_right_title_img" src="http://image1.sansancloud.com/xianhua/2019_12/13/15/32/8_313.jpg?x-oss-process=style/preview_120"></image>
+          <text class="members_right_title_text">推广权益</text>
+          <image class="members_right_title_img" src="http://image1.sansancloud.com/xianhua/2019_12/13/15/32/8_341.jpg?x-oss-process=style/preview_120"></image>
+        </view>
+        <view class="members_right_title_info">
+          <text>多推多赚，享受被动收益，可直接体现</text>
+          <text class="members_right_title_info_stress"></text>
+        </view>
+      </view>
+      <view class="members_right_list">
+        <view class="members_right_item" wx:for="{{promoteRightList}}">
+          <image class="members_right_item_icon" src="{{item.icon}}"></image>
+          <view class="members_right_item_info">
+            <text class="members_right_item_info_title">{{item.title}}</text>
+            <text class="members_right_item_info_subtitle">{{item.subTitle}}</text>
+          </view>
+        </view>
+        <view class="members_right_more">
+          <text>推广收益细则</text>
+          <image class="members_right_more_icon" src="http://image1.sansancloud.com/xianhua/2019_12/13/16/16/3_4.jpg?x-oss-process=style/preview_120"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="bottom_block"  animation="{{animationData}}">
+    <view class="open_btn">
+      <view class="open_btn_info">
+        <text>立即开通</text>
+        <view class="price_block">
+          <text>￥</text>
+          <text class="price_num">3999</text>
+          <text>/年</text>
+        </view>
+        <text class="line_price">¥12089</text>
+      </view>
+      <text class="open_btn_abstract">充值成为蟹老板，一年后金额未消费可退款</text>
+    </view>
+    <view class="agreement_block">
+      <text>*开通即代表同意</text>
+      <text style="color:#C1A77C">《会员协议》</text>
+    </view>
+  </view>
+</view>
